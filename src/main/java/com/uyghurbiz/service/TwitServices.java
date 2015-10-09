@@ -1,3 +1,6 @@
+package com.uyghurbiz.service;
+
+
 /**
  * Created by Yari_Dev on 9/11/15.
  */
