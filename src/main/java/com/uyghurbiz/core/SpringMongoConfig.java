@@ -2,7 +2,6 @@ package com.uyghurbiz.core;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
@@ -30,7 +29,6 @@ public class SpringMongoConfig extends AbstractMongoConfiguration {
      * @return the MongoDb
      * @throws Exception
      */
-    @Bean
     @Override
     public Mongo mongo() throws Exception {
         Mongo mongo = new MongoClient("localhost", 27017);

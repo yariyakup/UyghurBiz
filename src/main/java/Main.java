@@ -1,38 +1,39 @@
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
+import com.uyghurbiz.core.CoreEngineConfig;
+import com.uyghurbiz.repository.TestRepository;
+import com.uyghurbiz.service.TwitterUserServices;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import twitter4j.TwitterObjectFactory;
-import twitter4j.conf.ConfigurationBuilder;
+
+import java.util.logging.Logger;
 
 /**
  * Created by Yari_Dev on 9/11/15.
  */
 public class Main {
+    public static Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     /**
-     * We will use SpringBoot lATER
+     * We will use SpringBoot Later
      *
      * @param args
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception {
+        /**
+         * This will test your core application configuration
+         */
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CoreEngineConfig.class);
+        /**
+         * This will test the repository that u created and functionality
+         */
+        TestRepository rep = (TestRepository) context.getBean("testRepository");
+        /**
+         * This will service layer of the application
+         */
+        TwitterUserServices userServices = (TwitterUserServices) context.getBean("twitterTestUserService");
+
+        LOGGER.info("The collection exist : " + rep.isDbContainCollection());
+        LOGGER.info(TwitterObjectFactory.getRawJSON(userServices.getUserResource("Uyghur")));
 
 
-        ConfigurationBuilder cb = new ConfigurationBuilder();
-
-        //Store the credential locally
-        cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("")
-                .setOAuthConsumerSecret("")
-                .setOAuthAccessToken("")
-                .setOAuthAccessTokenSecret("")
-                .setJSONStoreEnabled(true);
-
-        Twitter tf = new TwitterFactory(cb.build()).getInstance();
-        try {
-            System.out.println(TwitterObjectFactory.getRawJSON(tf.users().lookupUsers("Uyghur")));
-
-        } catch (TwitterException e) {
-            e.printStackTrace();
-        }
     }
 }
