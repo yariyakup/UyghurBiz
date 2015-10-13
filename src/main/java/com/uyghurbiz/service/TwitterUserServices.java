@@ -11,7 +11,7 @@ import twitter4j.User;
 import java.util.List;
 
 /**
- * This Service will wrap the twitterUserService
+ * This Service will wrap the twitter UsersResources services
  * Created by Yari_Dev on 9/11/15.
  */
 @Service("twitterUserService")
