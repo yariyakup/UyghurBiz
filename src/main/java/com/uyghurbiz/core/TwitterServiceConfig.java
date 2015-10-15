@@ -1,5 +1,6 @@
 package com.uyghurbiz.core;
 
+import com.uyghurbiz.service.TwitterSuggestedUsersResourcesServices;
 import com.uyghurbiz.service.TwitterUserServices;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,5 +23,10 @@ public class TwitterServiceConfig {
         return new TwitterUserServices();
 
 
+    }
+
+    @Bean
+    public TwitterSuggestedUsersResourcesServices twitterSuggestedUsers(){
+        return new TwitterSuggestedUsersResourcesServices();
     }
 }

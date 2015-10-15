@@ -1,9 +1,13 @@
 import com.uyghurbiz.core.CoreEngineConfig;
 import com.uyghurbiz.repository.TestRepository;
+import com.uyghurbiz.service.TwitterSuggestedUsersResourcesServices;
 import com.uyghurbiz.service.TwitterUserServices;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import twitter4j.Category;
 import twitter4j.TwitterObjectFactory;
+import twitter4j.User;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -34,6 +38,14 @@ public class Main {
         LOGGER.info("The collection exist : " + rep.isDbContainCollection());
         LOGGER.info(TwitterObjectFactory.getRawJSON(userServices.getUserResource("Uyghur")));
 
-
+        /***
+         * this is the test for the suggested user services
+         *
+         */
+        TwitterSuggestedUsersResourcesServices suggestedUsersServices = (TwitterSuggestedUsersResourcesServices) context.getBean("twitterSuggestedUsers");
+        List<Category>categories = suggestedUsersServices.getSuggestedUserCategories();
+        List<User>suggestedUsers = suggestedUsersServices.getSuggestedUser(categories.get(0).getSlug());
+        LOGGER.info(TwitterObjectFactory.getRawJSON(categories));
+        LOGGER.info(TwitterObjectFactory.getRawJSON(suggestedUsers));
     }
 }
