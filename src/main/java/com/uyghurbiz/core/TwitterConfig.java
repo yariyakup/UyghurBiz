@@ -20,12 +20,7 @@ public class TwitterConfig {
      */
     private ConfigurationBuilder configBuilder() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("")
-                .setOAuthConsumerSecret("")
-                .setOAuthAccessToken("")
-                .setOAuthAccessTokenSecret("")
-                .setJSONStoreEnabled(true);
+
 
         return cb;
     }

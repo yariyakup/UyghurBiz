@@ -37,6 +37,7 @@ public class TwitterUserServices {
         try {
             listOfUser = twitter.users().lookupUsers(keyWord);
         } catch (TwitterException e) {
+            //System.out.println(e.getMessage());
             LOGGER.error("Cant get the list of user based on key: " + keyWord);
         }
 
