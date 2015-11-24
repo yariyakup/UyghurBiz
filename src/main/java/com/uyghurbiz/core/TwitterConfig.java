@@ -20,7 +20,12 @@ public class TwitterConfig {
      */
     private ConfigurationBuilder configBuilder() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
-
+        cb.setDebugEnabled(true)
+                .setOAuthConsumerKey("kkp6290aUpPrr5jQX6DpsZAvU")
+                .setOAuthConsumerSecret("bsGDNtpdsDGPXxLoA3LOHNrv1TVmdP54iDPTTguNcjCnIkINXm")
+                .setOAuthAccessToken("3363534549-VxxzBJ36E2O181GAEQDbfk1FEczDr4wISBbxkJH")
+                .setOAuthAccessTokenSecret("CNH6dNC3P7fySLzfLNodm0sRCZXEAdu7YEoWmf2gTiIei")
+                .setJSONStoreEnabled(true);
 
         return cb;
     }
